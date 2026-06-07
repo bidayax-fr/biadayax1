@@ -1,0 +1,1694 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>بداية إكس | BidayaX – وداعاً للعادة السرية والإباحية</title>
+<meta name="description" content="بداية إكس مؤسسة تهدف إلى مساعدة الأشخاص على التخلص من إدمان العادة السرية والإباحية من خلال محتوى معرفي وخطط محكمة.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;900&family=Tajawal:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #050505;
+    --bg-1: #0a0a0a;
+    --bg-2: #111111;
+    --bg-3: #161616;
+    --green: #1db954;
+    --green-dim: #16a348;
+    --green-glow: rgba(29, 185, 84, 0.15);
+    --green-glow-strong: rgba(29, 185, 84, 0.25);
+    --white: #ffffff;
+    --gray-1: #e5e5e5;
+    --gray-2: #a3a3a3;
+    --gray-3: #525252;
+    --gray-4: #262626;
+    --border: rgba(255,255,255,0.06);
+    --border-green: rgba(29,185,84,0.25);
+    --font-display: 'Cairo', sans-serif;
+    --font-body: 'Tajawal', sans-serif;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--white);
+    font-family: var(--font-body);
+    line-height: 1.7;
+    overflow-x: hidden;
+    direction: rtl;
+  }
+
+  /* ── NOISE TEXTURE OVERLAY ── */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.4;
+  }
+
+  /* ── SCROLLBAR ── */
+  ::-webkit-scrollbar { width: 4px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--green-dim); border-radius: 2px; }
+
+  /* ── NAVBAR ── */
+  nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    padding: 0 clamp(1.5rem, 5vw, 4rem);
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: rgba(5,5,5,0.85);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--border);
+    transition: background 0.3s;
+  }
+
+  .nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    text-decoration: none;
+  }
+
+  .nav-logo-mark {
+    width: 36px;
+    height: 36px;
+    background: var(--green);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-display);
+    font-weight: 900;
+    font-size: 1rem;
+    color: #000;
+    letter-spacing: -0.5px;
+    flex-shrink: 0;
+  }
+
+  .nav-logo-text {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: var(--white);
+    letter-spacing: 0.5px;
+  }
+
+  .nav-logo-text span { color: var(--green); }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    color: var(--gray-2);
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: color 0.2s;
+    font-family: var(--font-display);
+  }
+
+  .nav-links a:hover { color: var(--white); }
+
+  .nav-cta {
+    background: var(--green) !important;
+    color: #000 !important;
+    padding: 0.5rem 1.2rem;
+    border-radius: 6px;
+    font-weight: 700 !important;
+    transition: background 0.2s, transform 0.15s !important;
+  }
+
+  .nav-cta:hover { background: #22d45f !important; transform: translateY(-1px); }
+
+  .nav-burger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    padding: 4px;
+    background: none;
+    border: none;
+  }
+
+  .nav-burger span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: var(--white);
+    border-radius: 2px;
+    transition: all 0.3s;
+  }
+
+  .mobile-menu {
+    display: none;
+    position: fixed;
+    top: 70px;
+    left: 0;
+    right: 0;
+    background: rgba(10,10,10,0.98);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+    padding: 1.5rem clamp(1.5rem, 5vw, 4rem);
+    z-index: 99;
+    flex-direction: column;
+    gap: 1.2rem;
+  }
+
+  .mobile-menu.open { display: flex; }
+  .mobile-menu a {
+    color: var(--gray-1);
+    text-decoration: none;
+    font-size: 1rem;
+    font-family: var(--font-display);
+    font-weight: 500;
+    padding: 0.6rem 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 140px clamp(1.5rem, 5vw, 4rem) 80px;
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 60% 50% at 50% 0%, rgba(29,185,84,0.12) 0%, transparent 70%),
+      radial-gradient(ellipse 40% 40% at 80% 80%, rgba(29,185,84,0.05) 0%, transparent 60%);
+    pointer-events: none;
+  }
+
+  .hero-grid-lines {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(29,185,84,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(29,185,84,0.04) 1px, transparent 1px);
+    background-size: 60px 60px;
+    mask-image: radial-gradient(ellipse 80% 80% at 50% 0%, black 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 1;
+    max-width: 800px;
+  }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(29,185,84,0.08);
+    border: 1px solid var(--border-green);
+    border-radius: 100px;
+    padding: 0.4rem 1rem;
+    font-size: 0.8rem;
+    color: var(--green);
+    font-family: var(--font-display);
+    font-weight: 600;
+    margin-bottom: 2rem;
+    animation: fadeInDown 0.6s ease both;
+  }
+
+  .hero-badge-dot {
+    width: 6px; height: 6px;
+    background: var(--green);
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.4; transform: scale(0.8); }
+  }
+
+  .hero h1 {
+    font-family: var(--font-display);
+    font-size: clamp(2.2rem, 6vw, 4.2rem);
+    font-weight: 900;
+    line-height: 1.25;
+    margin-bottom: 1.5rem;
+    animation: fadeInUp 0.7s 0.1s ease both;
+  }
+
+  .hero h1 .accent { color: var(--green); }
+
+  .hero p {
+    font-size: clamp(1rem, 2vw, 1.15rem);
+    color: var(--gray-2);
+    max-width: 600px;
+    margin: 0 auto 2.5rem;
+    line-height: 1.8;
+    animation: fadeInUp 0.7s 0.2s ease both;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    animation: fadeInUp 0.7s 0.3s ease both;
+  }
+
+  .btn-primary {
+    background: var(--green);
+    color: #000;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 0.95rem;
+    padding: 0.85rem 2rem;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+    box-shadow: 0 0 20px rgba(29,185,84,0.25);
+  }
+
+  .btn-primary:hover {
+    background: #22d45f;
+    transform: translateY(-2px);
+    box-shadow: 0 0 32px rgba(29,185,84,0.4);
+  }
+
+  .btn-outline {
+    background: transparent;
+    color: var(--white);
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 0.95rem;
+    padding: 0.85rem 2rem;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: border-color 0.2s, background 0.2s;
+  }
+
+  .btn-outline:hover {
+    border-color: var(--green);
+    background: rgba(29,185,84,0.05);
+  }
+
+  .hero-scroll {
+    position: absolute;
+    bottom: 2.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.4rem;
+    animation: fadeIn 1s 0.8s ease both;
+  }
+
+  .scroll-line {
+    width: 1px;
+    height: 40px;
+    background: linear-gradient(to bottom, var(--green), transparent);
+    animation: scrollDown 1.8s ease infinite;
+  }
+
+  @keyframes scrollDown {
+    0% { transform: scaleY(0); transform-origin: top; }
+    50% { transform: scaleY(1); transform-origin: top; }
+    51% { transform: scaleY(1); transform-origin: bottom; }
+    100% { transform: scaleY(0); transform-origin: bottom; }
+  }
+
+  /* ── STATS BAR ── */
+  .stats-bar {
+    padding: 2rem clamp(1.5rem, 5vw, 4rem);
+    background: var(--bg-2);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .stats-inner {
+    max-width: 900px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    text-align: center;
+  }
+
+  .stat-item .stat-num {
+    font-family: var(--font-display);
+    font-size: clamp(1.5rem, 4vw, 2rem);
+    font-weight: 900;
+    color: var(--green);
+    display: block;
+  }
+
+  .stat-item .stat-label {
+    font-size: 0.85rem;
+    color: var(--gray-2);
+    margin-top: 0.3rem;
+  }
+
+  /* ── SECTION COMMONS ── */
+  section {
+    padding: 6rem clamp(1.5rem, 5vw, 4rem);
+    position: relative;
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: 4rem;
+  }
+
+  .section-tag {
+    display: inline-block;
+    background: rgba(29,185,84,0.08);
+    border: 1px solid var(--border-green);
+    color: var(--green);
+    font-size: 0.75rem;
+    font-family: var(--font-display);
+    font-weight: 700;
+    padding: 0.3rem 0.9rem;
+    border-radius: 100px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 1rem;
+  }
+
+  .section-title {
+    font-family: var(--font-display);
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    font-weight: 900;
+    line-height: 1.3;
+    margin-bottom: 1rem;
+  }
+
+  .section-title .accent { color: var(--green); }
+
+  .section-subtitle {
+    font-size: 1rem;
+    color: var(--gray-2);
+    max-width: 560px;
+    margin: 0 auto;
+    line-height: 1.8;
+  }
+
+  /* ── ABOUT ── */
+  #about {
+    background: var(--bg-1);
+    border-top: 1px solid var(--border);
+  }
+
+  .about-grid {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+
+  .about-text h2 {
+    font-family: var(--font-display);
+    font-size: clamp(1.6rem, 3vw, 2.2rem);
+    font-weight: 900;
+    line-height: 1.35;
+    margin-bottom: 1.5rem;
+  }
+
+  .about-text p {
+    color: var(--gray-2);
+    font-size: 0.95rem;
+    line-height: 1.9;
+    margin-bottom: 1.2rem;
+  }
+
+  .about-pillars {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .pillar {
+    background: var(--bg-3);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.2rem 1.4rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    transition: border-color 0.2s, background 0.2s;
+  }
+
+  .pillar:hover {
+    border-color: var(--border-green);
+    background: rgba(29,185,84,0.04);
+  }
+
+  .pillar-icon {
+    width: 40px;
+    height: 40px;
+    background: rgba(29,185,84,0.1);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-size: 1.1rem;
+  }
+
+  .pillar-text h4 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 0.95rem;
+    margin-bottom: 0.3rem;
+  }
+
+  .pillar-text p {
+    font-size: 0.82rem;
+    color: var(--gray-3);
+    line-height: 1.6;
+  }
+
+  /* ── NOT SECTION ── */
+  .not-section {
+    background: var(--bg);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .not-grid {
+    max-width: 900px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    text-align: center;
+  }
+
+  .not-card {
+    background: var(--bg-2);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 2rem 1.5rem;
+    transition: border-color 0.2s;
+  }
+
+  .not-card:hover { border-color: var(--gray-3); }
+
+  .not-x {
+    width: 44px; height: 44px;
+    background: rgba(239,68,68,0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1rem;
+    color: #ef4444;
+    font-size: 1.2rem;
+    font-weight: 700;
+  }
+
+  .not-card h3 {
+    font-family: var(--font-display);
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+  }
+
+  .not-card p { font-size: 0.82rem; color: var(--gray-3); line-height: 1.6; }
+
+  /* ── ARTICLES ── */
+  #articles {
+    background: var(--bg-1);
+    border-top: 1px solid var(--border);
+  }
+
+  .articles-grid {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+  }
+
+  .article-card {
+    background: var(--bg-2);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+    text-decoration: none;
+    display: block;
+    color: inherit;
+  }
+
+  .article-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--border-green);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.4);
+  }
+
+  .article-thumb {
+    height: 180px;
+    background: linear-gradient(135deg, var(--bg-3), #0f1f14);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .article-thumb::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, transparent 50%, rgba(0,0,0,0.6));
+  }
+
+  .article-thumb-icon {
+    font-size: 3rem;
+    opacity: 0.3;
+  }
+
+  .article-thumb-accent {
+    position: absolute;
+    bottom: -20px;
+    left: -20px;
+    width: 120px;
+    height: 120px;
+    background: radial-gradient(circle, rgba(29,185,84,0.2), transparent);
+    border-radius: 50%;
+  }
+
+  .article-body { padding: 1.5rem; }
+
+  .article-cat {
+    font-size: 0.72rem;
+    color: var(--green);
+    font-family: var(--font-display);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 0.7rem;
+    display: block;
+  }
+
+  .article-card h3 {
+    font-family: var(--font-display);
+    font-size: 1rem;
+    font-weight: 700;
+    line-height: 1.5;
+    margin-bottom: 0.8rem;
+    color: var(--white);
+  }
+
+  .article-card p {
+    font-size: 0.82rem;
+    color: var(--gray-3);
+    line-height: 1.7;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .article-meta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 1.2rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border);
+  }
+
+  .article-meta-time {
+    font-size: 0.75rem;
+    color: var(--gray-3);
+    font-family: var(--font-display);
+  }
+
+  .article-meta-arrow {
+    color: var(--green);
+    font-size: 0.9rem;
+    transition: transform 0.2s;
+  }
+
+  .article-card:hover .article-meta-arrow { transform: translateX(-4px); }
+
+  /* ── DIAGNOSTIC ── */
+  #diagnostic {
+    background: var(--bg);
+    border-top: 1px solid var(--border);
+  }
+
+  .diag-wrap {
+    max-width: 720px;
+    margin: 0 auto;
+  }
+
+  .diag-intro {
+    background: var(--bg-2);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 2rem 2.5rem;
+    margin-bottom: 2.5rem;
+    text-align: center;
+  }
+
+  .diag-intro p {
+    color: var(--gray-2);
+    font-size: 0.95rem;
+    line-height: 1.8;
+  }
+
+  /* Questions */
+  .diag-form { display: flex; flex-direction: column; gap: 2rem; }
+
+  .diag-question {
+    background: var(--bg-2);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 1.8rem 2rem;
+    transition: border-color 0.2s;
+  }
+
+  .diag-question.answered { border-color: var(--border-green); }
+
+  .q-num {
+    font-size: 0.72rem;
+    color: var(--green);
+    font-family: var(--font-display);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 0.7rem;
+    display: block;
+  }
+
+  .diag-question h4 {
+    font-family: var(--font-display);
+    font-size: 0.97rem;
+    font-weight: 600;
+    line-height: 1.6;
+    margin-bottom: 1.4rem;
+    color: var(--gray-1);
+  }
+
+  .q-options {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 0.5rem;
+  }
+
+  .q-option {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.4rem;
+    cursor: pointer;
+  }
+
+  .q-option input[type="radio"] { display: none; }
+
+  .q-btn {
+    width: 100%;
+    padding: 0.6rem 0.3rem;
+    background: var(--bg-3);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    color: var(--gray-2);
+    font-family: var(--font-display);
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.15s;
+    user-select: none;
+  }
+
+  .q-option input:checked + .q-btn {
+    background: rgba(29,185,84,0.12);
+    border-color: var(--green);
+    color: var(--green);
+  }
+
+  .q-btn:hover { border-color: var(--gray-3); color: var(--white); }
+
+  .q-option input:checked + .q-btn:hover {
+    background: rgba(29,185,84,0.18);
+  }
+
+  .diag-actions {
+    text-align: center;
+    margin-top: 1rem;
+  }
+
+  .diag-progress {
+    background: var(--bg-3);
+    border-radius: 100px;
+    height: 4px;
+    margin-bottom: 2.5rem;
+    overflow: hidden;
+  }
+
+  .diag-progress-bar {
+    height: 100%;
+    background: var(--green);
+    border-radius: 100px;
+    width: 0%;
+    transition: width 0.4s ease;
+    box-shadow: 0 0 10px rgba(29,185,84,0.5);
+  }
+
+  .diag-warning {
+    background: rgba(250,204,21,0.06);
+    border: 1px solid rgba(250,204,21,0.15);
+    border-radius: 10px;
+    padding: 1rem 1.2rem;
+    margin-top: 2rem;
+    font-size: 0.8rem;
+    color: #fbbf24;
+    line-height: 1.7;
+    text-align: center;
+  }
+
+  /* ── RESULT ── */
+  #result-section {
+    display: none;
+    background: var(--bg);
+  }
+
+  .result-wrap {
+    max-width: 720px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .result-card {
+    background: var(--bg-2);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 3rem 2.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .result-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    border-radius: 100px;
+    padding: 0.5rem 1.2rem;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 0.85rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .result-score-ring {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 2rem;
+    font-family: var(--font-display);
+    font-size: 2rem;
+    font-weight: 900;
+    border: 3px solid;
+    position: relative;
+  }
+
+  .result-title {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    font-weight: 900;
+    margin-bottom: 1rem;
+  }
+
+  .result-desc {
+    font-size: 0.9rem;
+    color: var(--gray-2);
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+  }
+
+  .result-points {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    text-align: right;
+    margin-bottom: 2rem;
+  }
+
+  .result-point {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.7rem;
+    background: var(--bg-3);
+    border-radius: 8px;
+    padding: 0.8rem 1rem;
+    font-size: 0.85rem;
+    color: var(--gray-2);
+  }
+
+  .result-point-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    margin-top: 0.45rem;
+  }
+
+  .result-disclaimer {
+    background: rgba(250,204,21,0.06);
+    border: 1px solid rgba(250,204,21,0.15);
+    border-radius: 10px;
+    padding: 1rem 1.2rem;
+    font-size: 0.8rem;
+    color: #fbbf24;
+    line-height: 1.7;
+    margin-bottom: 2rem;
+  }
+
+  .result-actions { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+
+  /* ── ARTICLE MODAL ── */
+  .modal-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.85);
+    backdrop-filter: blur(8px);
+    z-index: 200;
+    padding: 2rem clamp(1rem, 4vw, 3rem);
+    overflow-y: auto;
+  }
+
+  .modal-overlay.open { display: flex; align-items: flex-start; justify-content: center; }
+
+  .modal-box {
+    background: var(--bg-1);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    max-width: 720px;
+    width: 100%;
+    padding: 3rem;
+    position: relative;
+    margin: auto;
+  }
+
+  .modal-close {
+    position: absolute;
+    top: 1.5rem;
+    left: 1.5rem;
+    width: 36px; height: 36px;
+    background: var(--bg-2);
+    border: 1px solid var(--border);
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--gray-2);
+    font-size: 1rem;
+    transition: all 0.2s;
+  }
+
+  .modal-close:hover { background: var(--bg-3); color: var(--white); }
+
+  .modal-cat {
+    font-size: 0.72rem;
+    color: var(--green);
+    font-family: var(--font-display);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 1rem;
+    display: block;
+  }
+
+  .modal-box h2 {
+    font-family: var(--font-display);
+    font-size: clamp(1.2rem, 2.5vw, 1.7rem);
+    font-weight: 900;
+    line-height: 1.4;
+    margin-bottom: 2rem;
+  }
+
+  .modal-body p {
+    font-size: 0.93rem;
+    color: var(--gray-2);
+    line-height: 1.95;
+    margin-bottom: 1.2rem;
+  }
+
+  .modal-body strong {
+    color: var(--white);
+    font-weight: 600;
+  }
+
+  .modal-body .highlight {
+    background: rgba(29,185,84,0.07);
+    border-right: 3px solid var(--green);
+    padding: 1rem 1.2rem;
+    border-radius: 0 8px 8px 0;
+    margin: 1.5rem 0;
+    font-size: 0.88rem;
+    color: var(--gray-1);
+    line-height: 1.8;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--bg-1);
+    border-top: 1px solid var(--border);
+    padding: 4rem clamp(1.5rem, 5vw, 4rem) 2rem;
+  }
+
+  .footer-inner {
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  .footer-top {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr;
+    gap: 3rem;
+    margin-bottom: 3rem;
+  }
+
+  .footer-brand p {
+    font-size: 0.85rem;
+    color: var(--gray-3);
+    line-height: 1.8;
+    margin-top: 1rem;
+    max-width: 280px;
+  }
+
+  .footer-col h4 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+    color: var(--gray-1);
+  }
+
+  .footer-col ul { list-style: none; }
+  .footer-col li { margin-bottom: 0.6rem; }
+  .footer-col a {
+    color: var(--gray-3);
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: color 0.2s;
+    cursor: pointer;
+  }
+
+  .footer-col a:hover { color: var(--green); }
+
+  .footer-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border);
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .footer-bottom p {
+    font-size: 0.8rem;
+    color: var(--gray-3);
+  }
+
+  .footer-bottom span { color: var(--green); }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeInDown {
+    from { opacity: 0; transform: translateY(-12px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  /* Intersection observer reveal */
+  .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .reveal-delay-1 { transition-delay: 0.1s; }
+  .reveal-delay-2 { transition-delay: 0.2s; }
+  .reveal-delay-3 { transition-delay: 0.3s; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    .nav-links { display: none; }
+    .nav-burger { display: flex; }
+
+    .about-grid,
+    .not-grid,
+    .footer-top { grid-template-columns: 1fr; gap: 2rem; }
+
+    .q-options { grid-template-columns: repeat(5, 1fr); }
+    .q-btn { font-size: 0.65rem; padding: 0.5rem 0.1rem; }
+
+    .stats-inner { grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+
+    .modal-box { padding: 2rem 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ── NAVBAR ── -->
+<nav>
+  <a href="#" class="nav-logo" onclick="scrollTop()">
+    <div class="nav-logo-mark">BX</div>
+    <span class="nav-logo-text">BIDAYA<span>X</span></span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#about">حول بداية إكس</a></li>
+    <li><a href="#articles">المقالات</a></li>
+    <li><a href="#diagnostic" class="nav-cta">ابدأ التقييم</a></li>
+  </ul>
+  <button class="nav-burger" onclick="toggleMenu()" aria-label="القائمة">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#about" onclick="closeMenu()">حول بداية إكس</a>
+  <a href="#articles" onclick="closeMenu()">المقالات</a>
+  <a href="#diagnostic" onclick="closeMenu()" style="color:var(--green);font-weight:700">ابدأ التقييم</a>
+</div>
+
+<!-- ── HERO ── -->
+<section class="hero" id="home">
+  <div class="hero-bg"></div>
+  <div class="hero-grid-lines"></div>
+  <div class="hero-content">
+    <div class="hero-badge">
+      <div class="hero-badge-dot"></div>
+      منصة تعليمية وتوعوية
+    </div>
+    <h1>
+      وداعاً للعادة السرية<br>
+      <span class="accent">والإباحية</span>
+    </h1>
+    <p>
+      بداية إكس مؤسسة تهدف إلى مساعدة الأشخاص على التخلص من إدمان العادة السرية والإباحية من خلال محتوى معرفي وخطط محكمة.
+    </p>
+    <div class="hero-actions">
+      <a href="#diagnostic" class="btn-primary">
+        ابدأ التقييم
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+      <a href="#articles" class="btn-outline">استعرض المقالات</a>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- ── STATS ── -->
+<div class="stats-bar reveal">
+  <div class="stats-inner">
+    <div class="stat-item">
+      <span class="stat-num">محتوى</span>
+      <div class="stat-label">معرفي علمي موثوق</div>
+    </div>
+    <div class="stat-item">
+      <span class="stat-num">تقييم</span>
+      <div class="stat-label">ذاتي دون تدخل</div>
+    </div>
+    <div class="stat-item">
+      <span class="stat-num">خصوصية</span>
+      <div class="stat-label">كاملة بلا تسجيل</div>
+    </div>
+  </div>
+</div>
+
+<!-- ── ABOUT ── -->
+<section id="about">
+  <div class="about-grid">
+    <div class="about-text reveal">
+      <div class="section-tag">من نحن</div>
+      <h2>ما هي <span style="color:var(--green)">بداية إكس؟</span></h2>
+      <p>
+        بداية إكس هي مؤسسة تهدف إلى مساعدة أكبر عدد ممكن من الأشخاص في التخلص من إدمان العادة السرية والإباحية، عبر بناء وعي حقيقي، ودعم مستمر، وأدوات عملية تساعد على استعادة السيطرة على النفس والحياة.
+      </p>
+      <p>
+        نؤمن أن التغيير لا يحدث بين ليلة وضحاها، بل هو مسار تدريجي يعتمد على الصبر، والانضباط، وإعادة بناء العادات اليومية.
+      </p>
+      <p>
+        خصوصيتك واحترامك أولوية لدينا، وكل ما يتم داخل هذه المنظومة يهدف إلى حماية المستخدم وليس الحكم عليه.
+      </p>
+    </div>
+    <div class="about-pillars reveal reveal-delay-1">
+      <div class="pillar">
+        <div class="pillar-icon">📚</div>
+        <div class="pillar-text">
+          <h4>محتوى توعوي علمي</h4>
+          <p>مقالات مبنية على أبحاث في علم النفس السلوكي وعلم الأعصاب</p>
+        </div>
+      </div>
+      <div class="pillar">
+        <div class="pillar-icon">🔍</div>
+        <div class="pillar-text">
+          <h4>تقييم ذاتي موضوعي</h4>
+          <p>أداة تشخيص بسيطة لفهم النمط السلوكي دون أي حكم مسبق</p>
+        </div>
+      </div>
+      <div class="pillar">
+        <div class="pillar-icon">🔒</div>
+        <div class="pillar-text">
+          <h4>خصوصية كاملة</h4>
+          <p>لا تسجيل، لا بريد إلكتروني، لا تتبع لأي بيانات شخصية</p>
+        </div>
+      </div>
+      <div class="pillar">
+        <div class="pillar-icon">🎯</div>
+        <div class="pillar-text">
+          <h4>نهج تدريجي وواقعي</h4>
+          <p>لا وعود مبالغ فيها — فقط أدوات وفهم لبدء التغيير</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── NOT THIS ── -->
+<section class="not-section">
+  <div class="section-header reveal">
+    <div class="section-tag">وضوح تام</div>
+    <h2 class="section-title">بداية إكس <span class="accent">ليست</span></h2>
+    <p class="section-subtitle">نؤمن بالشفافية — إليك ما لا نقدمه بالتحديد</p>
+  </div>
+  <div class="not-grid">
+    <div class="not-card reveal reveal-delay-1">
+      <div class="not-x">✕</div>
+      <h3>علاجاً نفسياً</h3>
+      <p>لا نقدم خدمات علاجية أو استشارات طبية من أي نوع</p>
+    </div>
+    <div class="not-card reveal reveal-delay-2">
+      <div class="not-x">✕</div>
+      <h3>كوتشينغ شخصياً</h3>
+      <p>لا يوجد متابعة فردية أو جلسات تدريبية مع مدرب</p>
+    </div>
+    <div class="not-card reveal reveal-delay-3">
+      <div class="not-x">✕</div>
+      <h3>مجتمعاً أو منتدى</h3>
+      <p>لا توجد مساحات للتفاعل بين المستخدمين في هذه المرحلة</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── ARTICLES ── -->
+<section id="articles">
+  <div class="section-header reveal">
+    <div class="section-tag">المكتبة المعرفية</div>
+    <h2 class="section-title">مقالات <span class="accent">علمية وتوعوية</span></h2>
+    <p class="section-subtitle">محتوى مبني على أبحاث موثوقة في علم النفس السلوكي وعلم الأعصاب</p>
+  </div>
+  <div class="articles-grid">
+
+    <a class="article-card reveal reveal-delay-1" onclick="openArticle('a1')" href="javascript:void(0)">
+      <div class="article-thumb">
+        <div class="article-thumb-icon">🧠</div>
+        <div class="article-thumb-accent"></div>
+      </div>
+      <div class="article-body">
+        <span class="article-cat">علم الأعصاب</span>
+        <h3>تأثير الإباحية على الدماغ: كيف يتغير نظام المكافأة والسلوك مع الوقت؟</h3>
+        <p>تُظهر الأبحاث في علم الأعصاب أن الدماغ يحتوي على نظام يُسمّى "نظام المكافأة"، وهو المسؤول عن الشعور بالمتعة والتحفيز عند القيام بأنشطة مثل الأكل أو الإنجاز...</p>
+        <div class="article-meta">
+          <span class="article-meta-time">بداية إكس · علم الأعصاب</span>
+          <span class="article-meta-arrow">←</span>
+        </div>
+      </div>
+    </a>
+
+    <a class="article-card reveal reveal-delay-2" onclick="openArticle('a2')" href="javascript:void(0)">
+      <div class="article-thumb" style="background:linear-gradient(135deg,var(--bg-3),#1a0f00)">
+        <div class="article-thumb-icon">🔄</div>
+        <div class="article-thumb-accent" style="background:radial-gradient(circle,rgba(251,191,36,0.12),transparent)"></div>
+      </div>
+      <div class="article-body">
+        <span class="article-cat">علم النفس السلوكي</span>
+        <h3>إدمان العادة السرية والإباحية: كيف تتشكل الحلقة السلوكية ولماذا يصعب كسرها؟</h3>
+        <p>لا تتشكل السلوكيات القهرية بشكل مفاجئ، بل غالباً عبر ما يشبه "دائرة سلوكية" تتكرر مع الوقت وتصبح تلقائية عند بعض الأفراد...</p>
+        <div class="article-meta">
+          <span class="article-meta-time">بداية إكس · علم النفس</span>
+          <span class="article-meta-arrow">←</span>
+        </div>
+      </div>
+    </a>
+
+  </div>
+</section>
+
+<!-- ── DIAGNOSTIC ── -->
+<section id="diagnostic">
+  <div class="section-header reveal">
+    <div class="section-tag">التقييم الذاتي</div>
+    <h2 class="section-title">ابدأ <span class="accent">التقييم</span></h2>
+    <p class="section-subtitle">أجب عن الأسئلة التالية للحصول على تقييم أولي يساعدك على فهم وضعك الحالي بشكل أفضل</p>
+  </div>
+
+  <div class="diag-wrap">
+    <div class="diag-progress">
+      <div class="diag-progress-bar" id="progressBar"></div>
+    </div>
+    <div class="diag-intro">
+      <p>هذا التقييم يتضمن <strong style="color:var(--white)">٨ أسئلة</strong> قصيرة. اختر الإجابة الأكثر انطباقاً على وضعك الراهن. لا توجد إجابات صحيحة أو خاطئة.</p>
+    </div>
+    <div class="diag-form" id="diagForm">
+
+      <!-- Q1 -->
+      <div class="diag-question" data-q="0">
+        <span class="q-num">السؤال ١ من ٨</span>
+        <h4>هل تجد صعوبة في التوقف عن مشاهدة الإباحية أو ممارسة العادة عندما تبدأ؟</h4>
+        <div class="q-options">
+          <label class="q-option"><input type="radio" name="q0" value="0"><div class="q-btn">أبداً</div></label>
+          <label class="q-option"><input type="radio" name="q0" value="1"><div class="q-btn">نادراً</div></label>
+          <label class="q-option"><input type="radio" name="q0" value="2"><div class="q-btn">أحياناً</div></label>
+          <label class="q-option"><input type="radio" name="q0" value="3"><div class="q-btn">غالباً</div></label>
+          <label class="q-option"><input type="radio" name="q0" value="4"><div class="q-btn">دائماً</div></label>
+        </div>
+      </div>
+
+      <!-- Q2 -->
+      <div class="diag-question" data-q="1">
+        <span class="q-num">السؤال ٢ من ٨</span>
+        <h4>هل تبدأ مشاهدة الإباحية أو العادة بشكل تلقائي دون قرار مسبق واضح؟</h4>
+        <div class="q-options">
+          <label class="q-option"><input type="radio" name="q1" value="0"><div class="q-btn">أبداً</div></label>
+          <label class="q-option"><input type="radio" name="q1" value="1"><div class="q-btn">نادراً</div></label>
+          <label class="q-option"><input type="radio" name="q1" value="2"><div class="q-btn">أحياناً</div></label>
+          <label class="q-option"><input type="radio" name="q1" value="3"><div class="q-btn">غالباً</div></label>
+          <label class="q-option"><input type="radio" name="q1" value="4"><div class="q-btn">دائماً</div></label>
+        </div>
+      </div>
+
+      <!-- Q3 -->
+      <div class="diag-question" data-q="2">
+        <span class="q-num">السؤال ٣ من ٨</span>
+        <h4>هل حاولت تقليل أو التوقف عن هذه العادات من قبل وفشلت في ذلك؟</h4>
+        <div class="q-options">
+          <label class="q-option"><input type="radio" name="q2" value="0"><div class="q-btn">أبداً</div></label>
+          <label class="q-option"><input type="radio" name="q2" value="1"><div class="q-btn">نادراً</div></label>
+          <label class="q-option"><input type="radio" name="q2" value="2"><div class="q-btn">أحياناً</div></label>
+          <label class="q-option"><input type="radio" name="q2" value="3"><div class="q-btn">غالباً</div></label>
+          <label class="q-option"><input type="radio" name="q2" value="4"><div class="q-btn">دائماً</div></label>
+        </div>
+      </div>
+
+      <!-- Q4 -->
+      <div class="diag-question" data-q="3">
+        <span class="q-num">السؤال ٤ من ٨</span>
+        <h4>هل تكرر هذا السلوك رغم نيتك المسبقة بعدم القيام به؟</h4>
+        <div class="q-options">
+          <label class="q-option"><input type="radio" name="q3" value="0"><div class="q-btn">أبداً</div></label>
+          <label class="q-option"><input type="radio" name="q3" value="1"><div class="q-btn">نادراً</div></label>
+          <label class="q-option"><input type="radio" name="q3" value="2"><div class="q-btn">أحياناً</div></label>
+          <label class="q-option"><input type="radio" name="q3" value="3"><div class="q-btn">غالباً</div></label>
+          <label class="q-option"><input type="radio" name="q3" value="4"><div class="q-btn">دائماً</div></label>
+        </div>
+      </div>
+
+      <!-- Q5 -->
+      <div class="diag-question" data-q="4">
+        <span class="q-num">السؤال ٥ من ٨</span>
+        <h4>هل تلجأ إلى الإباحية أو العادة عند التوتر، الملل، الوحدة أو الضغط النفسي؟</h4>
+        <div class="q-options">
+          <label class="q-option"><input type="radio" name="q4" value="0"><div class="q-btn">أبداً</div></label>
+          <label class="q-option"><input type="radio" name="q4" value="1"><div class="q-btn">نادراً</div></label>
+          <label class="q-option"><input type="radio" name="q4" value="2"><div class="q-btn">أحياناً</div></label>
+          <label class="q-option"><input type="radio" name="q4" value="3"><div class="q-btn">غالباً</div></label>
+          <label class="q-option"><input type="radio" name="q4" value="4"><div class="q-btn">دائماً</div></label>
+        </div>
+      </div>
+
+      <!-- Q6 -->
+      <div class="diag-question" data-q="5">
+        <span class="q-num">السؤال ٦ من ٨</span>
+        <h4>هل يؤدي هذا السلوك إلى تأجيل الدراسة، العمل أو المهام المهمة؟</h4>
+        <div class="q-options">
+          <label class="q-option"><input type="radio" name="q5" value="0"><div class="q-btn">أبداً</div></label>
+          <label class="q-option"><input type="radio" name="q5" value="1"><div class="q-btn">نادراً</div></label>
+          <label class="q-option"><input type="radio" name="q5" value="2"><div class="q-btn">أحياناً</div></label>
+          <label class="q-option"><input type="radio" name="q5" value="3"><div class="q-btn">غالباً</div></label>
+          <label class="q-option"><input type="radio" name="q5" value="4"><div class="q-btn">دائماً</div></label>
+        </div>
+      </div>
+
+      <!-- Q7 -->
+      <div class="diag-question" data-q="6">
+        <span class="q-num">السؤال ٧ من ٨</span>
+        <h4>هل لاحظت أنك تحتاج إلى المزيد من الوقت أو المحتوى للحصول على نفس الشعور السابق؟</h4>
+        <div class="q-options">
+          <label class="q-option"><input type="radio" name="q6" value="0"><div class="q-btn">أبداً</div></label>
+          <label class="q-option"><input type="radio" name="q6" value="1"><div class="q-btn">نادراً</div></label>
+          <label class="q-option"><input type="radio" name="q6" value="2"><div class="q-btn">أحياناً</div></label>
+          <label class="q-option"><input type="radio" name="q6" value="3"><div class="q-btn">غالباً</div></label>
+          <label class="q-option"><input type="radio" name="q6" value="4"><div class="q-btn">دائماً</div></label>
+        </div>
+      </div>
+
+      <!-- Q8 -->
+      <div class="diag-question" data-q="7">
+        <span class="q-num">السؤال ٨ من ٨</span>
+        <h4>هل تشعر بتعارض بين هذا السلوك والصورة التي تريد أن تكون عليها أو القيم التي تسعى لها؟</h4>
+        <div class="q-options">
+          <label class="q-option"><input type="radio" name="q7" value="0"><div class="q-btn">أبداً</div></label>
+          <label class="q-option"><input type="radio" name="q7" value="1"><div class="q-btn">نادراً</div></label>
+          <label class="q-option"><input type="radio" name="q7" value="2"><div class="q-btn">أحياناً</div></label>
+          <label class="q-option"><input type="radio" name="q7" value="3"><div class="q-btn">غالباً</div></label>
+          <label class="q-option"><input type="radio" name="q7" value="4"><div class="q-btn">دائماً</div></label>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="diag-actions" style="margin-top:2rem">
+      <button class="btn-primary" onclick="submitDiag()">
+        احصل على نتائجك
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </button>
+    </div>
+
+    <div class="diag-warning">
+      ⚠️ هذا الاختبار هو أداة تقييم ذاتي مبنية على مؤشرات مستخدمة في علم النفس السلوكي لفهم أنماط استخدام المواد الإباحية والسلوكيات القهرية. لا يُعتبر هذا الاختبار تشخيصاً طبياً ولا يُغني عن استشارة مختص في الصحة النفسية.
+    </div>
+  </div>
+</section>
+
+<!-- ── RESULT SECTION ── -->
+<section id="result-section">
+  <div class="result-wrap">
+    <div class="section-header">
+      <div class="section-tag">نتيجة تقييمك</div>
+      <h2 class="section-title">نتائج <span class="accent">التقييم الذاتي</span></h2>
+    </div>
+
+    <div class="result-card" id="resultCard">
+      <!-- filled by JS -->
+    </div>
+
+    <div class="result-disclaimer">
+      ⚠️ هذه النتيجة هي تقييم ذاتي فقط، وليست تشخيصاً طبياً. إذا كنت تشعر بمعاناة شديدة، يُنصح بالتحدث مع متخصص في الصحة النفسية.
+    </div>
+
+    <div class="result-actions">
+      <a href="#articles" class="btn-primary" onclick="document.getElementById('result-section').style.display='none'">
+        استعرض المقالات التعليمية
+      </a>
+      <button class="btn-outline" onclick="resetDiag()">إعادة التقييم</button>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="#" class="nav-logo" style="margin-bottom:0.5rem;display:inline-flex">
+          <div class="nav-logo-mark">BX</div>
+          <span class="nav-logo-text" style="margin-right:0.6rem">BIDAYA<span>X</span></span>
+        </a>
+        <p>مؤسسة تعليمية وتوعوية تهدف إلى مساعدة الأشخاص على التخلص من إدمان العادة السرية والإباحية عبر محتوى معرفي موثوق.</p>
+      </div>
+      <div class="footer-col">
+        <h4>التنقل</h4>
+        <ul>
+          <li><a href="#home">الرئيسية</a></li>
+          <li><a href="#about">حول بداية إكس</a></li>
+          <li><a href="#articles">المقالات</a></li>
+          <li><a href="#diagnostic">التقييم</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>ملاحظة مهمة</h4>
+        <ul>
+          <li><a href="#">ليس علاجاً نفسياً</a></li>
+          <li><a href="#">ليس كوتشينغ</a></li>
+          <li><a href="#">خصوصية تامة</a></li>
+          <li><a href="#">لا تسجيل مطلوب</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© ٢٠٢٥ <span>بداية إكس</span> — جميع الحقوق محفوظة</p>
+      <p style="font-size:0.75rem;color:var(--gray-3)">هذا الموقع لأغراض تعليمية وتوعوية فقط</p>
+    </div>
+  </div>
+</footer>
+
+<!-- ── ARTICLE MODALS ── -->
+<div class="modal-overlay" id="modalA1" onclick="closeModal(event,'modalA1')">
+  <div class="modal-box" onclick="event.stopPropagation()">
+    <button class="modal-close" onclick="closeModalById('modalA1')">✕</button>
+    <span class="modal-cat">علم الأعصاب</span>
+    <h2>تأثير الإباحية على الدماغ: كيف يتغير نظام المكافأة والسلوك مع الوقت؟</h2>
+    <div class="modal-body">
+      <p>تُظهر الأبحاث في علم الأعصاب أن الدماغ يحتوي على نظام يُسمّى <strong>"نظام المكافأة"</strong>، وهو المسؤول عن الشعور بالمتعة والتحفيز عند القيام بأنشطة مثل الأكل، الإنجاز، أو العلاقات الاجتماعية.</p>
+      <p>عند التعرض المتكرر لمثيرات قوية وسريعة مثل المحتوى الإباحي، يتم تحفيز إفراز <strong>الدوبامين</strong>، وهو ناقل عصبي مرتبط بالشعور بالمتعة والتوقع.</p>
+      <div class="highlight">
+        تشير بعض الدراسات إلى أن التعرض المفرط والمتكرر للمحفزات عالية الإثارة قد يؤدي إلى ما يُشبه "التعود" (Habituation)، حيث يصبح الدماغ أقل استجابة للمحفزات الطبيعية، ويحتاج إلى مستوى أعلى من الإثارة للحصول على نفس الشعور.
+      </div>
+      <p>هذا لا يعني أن الدماغ <strong>"يتلف"</strong>، بل يعني أن أنماط التحفيز قد تتغير مع السلوك المتكرر، وهو أمر يمكن تعديله عبر تغيير العادات والسلوكيات اليومية.</p>
+      <p>من المهم الإشارة إلى أن مفهوم "إدمان الإباحية" لا يزال موضوع نقاش علمي، لكن هناك اتفاق على وجود سلوكيات قهرية عند بعض الأفراد يمكن أن تؤثر على التركيز، الوقت، والدافعية.</p>
+      <p>إعادة التوازن عادة تعتمد على تقليل المحفزات العالية، وبناء أنشطة بديلة مثل <strong>الرياضة، التعلم، والتواصل الاجتماعي</strong>.</p>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modalA2" onclick="closeModal(event,'modalA2')">
+  <div class="modal-box" onclick="event.stopPropagation()">
+    <button class="modal-close" onclick="closeModalById('modalA2')">✕</button>
+    <span class="modal-cat">علم النفس السلوكي</span>
+    <h2>إدمان العادة السرية والإباحية: كيف تتشكل الحلقة السلوكية ولماذا يصعب كسرها؟</h2>
+    <div class="modal-body">
+      <p>لا تتشكل السلوكيات القهرية بشكل مفاجئ، بل غالباً عبر ما يشبه <strong>"دائرة سلوكية"</strong> تتكرر مع الوقت وتصبح تلقائية عند بعض الأفراد.</p>
+      <p>تبدأ هذه الدائرة عادة بـ <strong>محفّز</strong> (مثل التوتر، الملل، الوحدة، أو الضغط النفسي)، ثم يظهر دافع داخلي قوي يدفع نحو البحث عن وسيلة سريعة لتخفيف هذا الشعور.</p>
+      <div class="highlight">
+        في بعض الحالات، يتم اللجوء إلى سلوكيات توفر راحة فورية وسريعة، مثل استخدام المحتوى الإباحي أو العادة السرية، مما يؤدي إلى شعور مؤقت بالارتياح أو تخفيف التوتر. بعد ذلك، قد يظهر شعور بالندم أو فقدان السيطرة، مما يزيد من التوتر الداخلي، ويعيد إنتاج نفس الدائرة مرة أخرى.
+      </div>
+      <p>تشير نماذج في علم النفس السلوكي إلى أن هذه الحلقة تُشبه ما يُعرف بـ <strong>"حلقة العادة" (Habit Loop)</strong>:</p>
+      <p style="text-align:center;padding:1rem;background:var(--bg-3);border-radius:8px;font-family:var(--font-display);font-weight:700;color:var(--green);letter-spacing:2px">محفّز ← سلوك ← مكافأة ← تكرار</p>
+      <p>فهم هذه الدائرة يُعتبر خطوة أساسية، لأنه يسمح بالانتقال من التعامل مع السلوك كـ "ضعف إرادة" إلى فهمه كـ <strong>نمط قابل للتغيير</strong> عبر تعديل المحفزات وبناء بدائل صحية.</p>
+      <p>من الأساليب المستخدمة في هذا المجال: تقليل التعرض للمحفزات، إدخال أنشطة بديلة عند لحظات الضعف، وبناء روتين يومي أكثر استقراراً يساعد على كسر الحلقة تدريجياً.</p>
+    </div>
+  </div>
+</div>
+
+<script>
+  // ── MOBILE MENU ──
+  function toggleMenu() {
+    document.getElementById('mobileMenu').classList.toggle('open');
+  }
+  function closeMenu() {
+    document.getElementById('mobileMenu').classList.remove('open');
+  }
+  function scrollTop() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    return false;
+  }
+
+  // ── REVEAL ANIMATION ──
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  reveals.forEach(el => observer.observe(el));
+
+  // ── PROGRESS BAR ──
+  function updateProgress() {
+    const total = 8;
+    const answered = document.querySelectorAll('.diag-question.answered').length;
+    document.getElementById('progressBar').style.width = (answered / total * 100) + '%';
+  }
+
+  document.querySelectorAll('.diag-question input[type="radio"]').forEach(input => {
+    input.addEventListener('change', () => {
+      const q = input.closest('.diag-question');
+      q.classList.add('answered');
+      updateProgress();
+    });
+  });
+
+  // ── DIAGNOSTIC SUBMIT ──
+  function submitDiag() {
+    const answers = [];
+    for (let i = 0; i < 8; i++) {
+      const selected = document.querySelector(`input[name="q${i}"]:checked`);
+      if (!selected) {
+        alert('يرجى الإجابة على جميع الأسئلة.');
+        return;
+      }
+      answers.push(parseInt(selected.value));
+    }
+    const total = answers.reduce((a, b) => a + b, 0);
+    showResult(total);
+  }
+
+  function showResult(score) {
+    const diagSec = document.getElementById('diagnostic');
+    const resultSec = document.getElementById('result-section');
+
+    let level, color, hexColor, title, points;
+
+    if (score <= 7) {
+      level = '🟢';
+      hexColor = '#22c55e';
+      title = 'نمط استخدام تحت السيطرة';
+      points = [
+        'السلوك موجود لكن تحت تحكم واعٍ',
+        'لا يوجد نمط تكرار قهري واضح',
+        'استمر في بناء عادات إيجابية يومية'
+      ];
+    } else if (score <= 15) {
+      level = '🟡';
+      hexColor = '#eab308';
+      title = 'بداية نمط استخدام غير متوازن';
+      points = [
+        'وجود سلوكيات تلقائية في بعض الحالات',
+        'ارتباط جزئي بالمشاعر أو الملل',
+        'صعوبة متقطعة في التحكم',
+        'ابدأ بتحديد المحفزات وتقليل التعرض لها'
+      ];
+    } else if (score <= 23) {
+      level = '🟠';
+      hexColor = '#f97316';
+      title = 'نمط استخدام قهري محتمل';
+      points = [
+        'تكرار رغم نية التوقف',
+        'ارتباط واضح بالتوتر أو الفراغ',
+        'تأثير على الإنتاجية أو الالتزامات',
+        'يُنصح بقراءة المقالات وفهم الحلقة السلوكية'
+      ];
+    } else {
+      level = '🔴';
+      hexColor = '#ef4444';
+      title = 'نمط استخدام قهري مرتفع';
+      points = [
+        'فقدان واضح للتحكم في السلوك',
+        'استخدام متكرر كتنظيم عاطفي',
+        'صراع داخلي مستمر بين السلوك والأهداف',
+        'يُنصح بالتواصل مع متخصص في الصحة النفسية'
+      ];
+    }
+
+    const pointsHTML = points.map(p => `
+      <div class="result-point">
+        <div class="result-point-dot" style="background:${hexColor}"></div>
+        <span>${p}</span>
+      </div>
+    `).join('');
+
+    document.getElementById('resultCard').innerHTML = `
+      <div class="result-score-ring" style="border-color:${hexColor};color:${hexColor}">
+        ${score}<span style="font-size:0.9rem;color:var(--gray-3)">/32</span>
+      </div>
+      <div class="result-badge" style="background:${hexColor}22;border:1px solid ${hexColor}44;color:${hexColor}">
+        ${level} ${title}
+      </div>
+      <div class="result-points">${pointsHTML}</div>
+    `;
+
+    diagSec.style.display = 'none';
+    resultSec.style.display = 'block';
+    resultSec.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  function resetDiag() {
+    document.querySelectorAll('.diag-question input[type="radio"]').forEach(i => i.checked = false);
+    document.querySelectorAll('.diag-question').forEach(q => q.classList.remove('answered'));
+    document.getElementById('progressBar').style.width = '0%';
+    document.getElementById('result-section').style.display = 'none';
+    document.getElementById('diagnostic').style.display = 'block';
+    document.getElementById('diagnostic').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  // ── ARTICLE MODAL ──
+  function openArticle(id) {
+    const map = { a1: 'modalA1', a2: 'modalA2' };
+    document.getElementById(map[id]).classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeModal(e, id) {
+    document.getElementById(id).classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  function closeModalById(id) {
+    document.getElementById(id).classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      document.querySelectorAll('.modal-overlay.open').forEach(m => {
+        m.classList.remove('open');
+        document.body.style.overflow = '';
+      });
+    }
+  });
+</script>
+</body>
+</html>
